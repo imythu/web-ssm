@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.myth.dao.CourseMapper" >
+    <resultMap id="BaseResultMap" type="com.myth.pojo.Course" >
+        <id column="N_COURSE_ID" property="nCourseId" jdbcType="INTEGER" />
+        <result column="VC_COURSE_NAME" property="vcCourseName" jdbcType="VARCHAR" />
+        <result column="N_TYPE" property="nType" jdbcType="INTEGER" />
+        <result column="F_CREDIT" property="fCredit" jdbcType="REAL" />
+        <result column="N_GRADE" property="nGrade" jdbcType="INTEGER" />
+        <result column="N_MAJOR" property="nMajor" jdbcType="INTEGER" />
+        <result column="VC_DETAIL" property="vcDetail" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    N_COURSE_ID, VC_COURSE_NAME, N_TYPE, F_CREDIT, N_GRADE, N_MAJOR, VC_DETAIL
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from t_course
+        where N_COURSE_ID = #{nCourseId,jdbcType=INTEGER}
+    </select><select id="getAllCourse" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_course
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_course
+    where N_COURSE_ID = #{nCourseId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.myth.pojo.Course" >
+    insert into t_course (N_COURSE_ID, VC_COURSE_NAME, N_TYPE, 
+      F_CREDIT, N_GRADE, N_MAJOR, 
+      VC_DETAIL)
+    values (#{nCourseId,jdbcType=INTEGER}, #{vcCourseName,jdbcType=VARCHAR}, #{nType,jdbcType=INTEGER}, 
+      #{fCredit,jdbcType=REAL}, #{nGrade,jdbcType=INTEGER}, #{nMajor,jdbcType=INTEGER}, 
+      #{vcDetail,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.myth.pojo.Course" >
+        insert into t_course
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="nCourseId != null" >
+                N_COURSE_ID,
+            </if>
+            <if test="vcCourseName != null" >
+                VC_COURSE_NAME,
+            </if>
+            <if test="nType != null" >
+                N_TYPE,
+            </if>
+            <if test="fCredit != null" >
+                F_CREDIT,
+            </if>
+            <if test="nGrade != null" >
+                N_GRADE,
+            </if>
+            <if test="nMajor != null" >
+                N_MAJOR,
+            </if>
+            <if test="vcDetail != null" >
+                VC_DETAIL,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="nCourseId != null" >
+                #{nCourseId,jdbcType=INTEGER},
+            </if>
+            <if test="vcCourseName != null" >
+                #{vcCourseName,jdbcType=VARCHAR},
+            </if>
+            <if test="nType != null" >
+                #{nType,jdbcType=INTEGER},
+            </if>
+            <if test="fCredit != null" >
+                #{fCredit,jdbcType=REAL},
+            </if>
+            <if test="nGrade != null" >
+                #{nGrade,jdbcType=INTEGER},
+            </if>
+            <if test="nMajor != null" >
+                #{nMajor,jdbcType=INTEGER},
+            </if>
+            <if test="vcDetail != null" >
+                #{vcDetail,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.myth.pojo.Course" >
+        update t_course
+        <set >
+            <if test="vcCourseName != null" >
+                VC_COURSE_NAME = #{vcCourseName,jdbcType=VARCHAR},
+            </if>
+            <if test="nType != null" >
+                N_TYPE = #{nType,jdbcType=INTEGER},
+            </if>
+            <if test="fCredit != null" >
+                F_CREDIT = #{fCredit,jdbcType=REAL},
+            </if>
+            <if test="nGrade != null" >
+                N_GRADE = #{nGrade,jdbcType=INTEGER},
+            </if>
+            <if test="nMajor != null" >
+                N_MAJOR = #{nMajor,jdbcType=INTEGER},
+            </if>
+            <if test="vcDetail != null" >
+                VC_DETAIL = #{vcDetail,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where N_COURSE_ID = #{nCourseId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.myth.pojo.Course" >
+    update t_course
+    set VC_COURSE_NAME = #{vcCourseName,jdbcType=VARCHAR},
+      N_TYPE = #{nType,jdbcType=INTEGER},
+      F_CREDIT = #{fCredit,jdbcType=REAL},
+      N_GRADE = #{nGrade,jdbcType=INTEGER},
+      N_MAJOR = #{nMajor,jdbcType=INTEGER},
+      VC_DETAIL = #{vcDetail,jdbcType=VARCHAR}
+    where N_COURSE_ID = #{nCourseId,jdbcType=INTEGER}
+  </update>
+</mapper>

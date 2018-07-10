@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body {
+	background-color: #F0E68C;
+}
+
+table {
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px solid black;
+	margin-top: 8%;
+}
+
+th, td{
+	border: 1px solid black;
+	width: auto;
+}
+
+th {
+	text-align: right;
+	font-weight: normal;
+}
+
+.description {
+	border: 0px;
+	margin-left: auto;
+}
+
+.redNotice {
+	color: red;
+}
+
+#Submit {
+	text-align: center;
+	vertical-align: middle;
+}
