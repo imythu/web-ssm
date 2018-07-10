@@ -1,2 +1,24 @@
 # web-ssm
 web的ssm框架，简单的例子
+下面是数据库脚本
+CREATE DATABASE IF NOT EXISTS db_student;
+USE db_student;
+DROP TABLE IF EXISTS t_course;
+
+CREATE TABLE t_course (
+						N_COURSE_ID INT(11) NOT NULL AUTO_INCREMENT,
+						VC_COURSE_NAME VARCHAR(20) NOT NULL,
+						N_TYPE INT(1) NOT NULL,
+						F_CREDIT FLOAT NOT NULL,
+						N_GRADE INT(4) NOT NULL,
+						N_MAJOR INT(2) NOT NULL,
+						VC_DETAIL VARCHAR(200) DEFAULT NULL,
+						PRIMARY KEY (N_COURSE_ID)
+						)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+LOCK TABLES t_course WRITE;
+INSERT INTO t_course (VC_COURSE_NAME, N_TYPE, F_CREDIT, N_GRADE, N_MAJOR) VALUES
+						("Java程序设计", 4, 3, 2015, 1),
+						("Web应用程序设计", 5, 2, 2015, 1),
+						("JSP程序设计", 5, 2, 2015, 2);
+UNLOCK TABLES;
