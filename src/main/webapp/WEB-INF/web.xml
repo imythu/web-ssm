@@ -61,7 +61,6 @@
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
-
     <!-- 拦截设置 -->
     <servlet-mapping>
         <servlet-name>course</servlet-name>
